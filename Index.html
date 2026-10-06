@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Journey Through a Situation</title>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fdf6f6;--card:#fff;--ink:#5a3a35;--mute:#9a7b76;--pink:#f6dde2;--acc:#b9686f;--line:#e4c9cc;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241a1b;--card:#2f2224;--ink:#f1dcd8;--mute:#bfa09b;--pink:#4a2f35;--acc:#e08f97;--line:#5a4044}}
+:root[data-theme="dark"]{--bg:#241a1b;--card:#2f2224;--ink:#f1dcd8;--mute:#bfa09b;--pink:#4a2f35;--acc:#e08f97;--line:#5a4044}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.5 Quicksand,system-ui,sans-serif}
+.w{max-width:620px;margin:0 auto;padding:16px 16px 120px}
+.bar{height:6px;background:var(--pink);border-radius:9px;overflow:hidden;margin:6px 0 4px}.bar i{display:block;height:100%;background:var(--acc);transition:width .3s}
+.pg{font-size:13px;color:var(--mute);margin-bottom:10px}
+h1{font-size:25px;margin:8px 0}h2{font-size:22px;margin:6px 0 4px}
+.note{background:var(--pink);border-radius:14px;padding:12px 14px;font-size:15px;margin:10px 0}
+.f{background:var(--card);border:1.5px dashed var(--line);border-radius:16px;padding:14px;margin:14px 0}
+.f label.l{display:block;font-weight:700;margin-bottom:2px}.h{font-size:14px;color:var(--mute);margin-bottom:8px}
+textarea,input[type=text],input[type=number]{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px}
+textarea{min-height:110px;resize:vertical}
+.o{display:flex;gap:10px;align-items:center;padding:9px 4px;border-bottom:1px solid var(--line)}.o:last-child{border:0}
+.o input{width:22px;height:22px;accent-color:var(--acc)}.o input[type=text]{width:auto;flex:1;min-width:0;height:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.c{border:1.5px solid var(--acc);color:var(--acc);background:none;border-radius:99px;padding:8px 14px;font:inherit;font-size:15px}
+.c.on{background:var(--acc);color:#fff}.c:active{transform:scale(.96)}.c .n{display:inline-block;min-width:20px;height:20px;line-height:20px;border-radius:10px;background:#fff;color:var(--acc);font-size:12px;font-weight:700;margin-left:6px;text-align:center}
+.seq{background:var(--pink);border-radius:12px;padding:10px;min-height:44px;font-weight:600}
+.rate{display:flex;gap:10px;justify-content:space-between}.rate button{flex:1;height:48px;border-radius:50%;border:1.5px solid var(--acc);background:none;color:var(--ink);font:inherit;font-weight:700}
+.rate button.on{background:var(--acc);color:#fff}
+.rl{display:flex;justify-content:space-between;font-size:12px;color:var(--mute);margin-top:4px}
+.ai{border-top:1px dashed var(--line);padding-top:10px;margin-top:10px}.ai b{color:var(--acc)}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--bg);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.nav div{max-width:620px;margin:0 auto;display:flex;gap:10px}
+.b{flex:1;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:700;background:var(--acc);color:#fff}
+.b.g{background:var(--pink);color:var(--ink)}.b:disabled{opacity:.5}
+.t{display:flex;justify-content:flex-end}.t button{background:none;border:0;color:var(--mute);font:inherit;font-size:13px;text-decoration:underline}
+.ok{text-align:center;padding:20px 0}.ok .big{font-size:48px}
+.row{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px;margin:8px 0;font-size:14px}
+.pdf{background:#fff;color:#4a2f2b;border-radius:14px;padding:22px 20px;position:relative;font:14px/1.5 Quicksand,system-ui,sans-serif;border:1px solid var(--line)}
+.pdf h1{font-size:20px;color:#b9686f;margin:0 0 2px}.pdf .m{font-size:12px;color:#8a6c67;margin-bottom:12px}
+.pdf .qa{margin:0 0 12px;padding-bottom:8px;border-bottom:1px dashed #e4c9cc}.pdf .q{font-weight:700;font-size:13px;color:#7a4a45}.pdf .a{white-space:pre-wrap;word-break:break-word}
+.oth{background:var(--pink);border-radius:12px;padding:12px;margin:8px 0}.oth input{margin:6px 0}
+.stack{display:flex;flex-direction:column;gap:10px;margin-top:14px}.stack .b{flex:none}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script></head><body><div class="w" id="app"></div><div class="nav" id="nav"><div></div></div>
+<script>
+const SRC=["Mother","Mother-in-law","Husband/partner","Other family","Friend","Doctor","Nurse/health worker","Google","YouTube","Social media","AI/ChatGPT","Book/article","Your own experience","Observing your baby"];
+const S=[
+{t:"Welcome",n:"Thank you for sharing your story ♡ There is no right or wrong way to answer. Write in the way that feels natural to you. You don't have to fill every box, just share what felt important. Your answers are only for research. You can type in any language.",f:[
+{k:"name",l:"Your name or nickname (optional)",y:"s"},{k:"babyAge",l:"Your baby's age",y:"s",h:"For example: 1 year 3 months"}]},
+{t:"My experience of motherhood",f:[
+{k:"goodMother",l:"I feel I am doing a good job as a mother when...",h:"Write whatever comes to your mind.",y:"t"},
+{k:"unsureHelps",l:"When you are unsure about something about your baby, what usually helps you decide what to do?",y:"t"}]},
+{t:"My journey through a situation",n:"Think of one recent situation about your baby's health, nutrition or care that affected you the most. The next pages are about this one situation.",f:[
+{k:"happened",l:"1. What happened?",y:"t"},{k:"unsure",l:"2. What were you unsure or worried about?",h:"What were you not able to understand?",y:"t"},
+{k:"feeling",l:"3. How were you feeling at that moment?",h:"What was going through your mind? What emotions?",y:"t"}]},
+{t:"Who or what did you turn to?",f:[
+{k:"who",l:"Who or what did you turn to in that situation?",h:"Tick everything you turned to during this situation for help, information, support, checking, or deciding what to do. This can be a person, a source of information, something you searched, your own experience, or observing your baby.",y:"c"}]},
+{t:"The order you turned to each source",n:"Go back through the situation and show us what you turned to, from first to last. Tap each person or source in the order you used them. If you returned to the same one later, tap it again. Your journey does not have to be linear.",f:[{k:"seq",l:"Your journey, in order",h:"Example: Mother → AI/ChatGPT → Husband/partner → Mother → Doctor. If you can't recall, check call history, WhatsApp or AI chat history.",y:"q"}]},
+{t:"Why did you turn to each one?",n:"For each person or source in your journey, tell us why you turned to them at that point. Your reason may be different each time you returned to the same source.",f:[{k:"why",l:"Why did you turn to each one?",y:"w"}]},
+{t:"My use of AI in this situation",n:"If you don't remember exactly, please look at your AI chat history.",f:[
+{k:"aiCount",l:"I used AI ___ times in this situation.",h:"Type a number. The boxes below will appear by themselves.",y:"n"},
+{k:"ai",l:"Tell us about each time",h:"Start with the first time and end with the last time.",y:"a"}]},
+{t:"Final decision",f:[
+{k:"decision",l:"What did you decide to do finally in that situation?",y:"t"},{k:"helped",l:"What helped you make this decision?",y:"t"},
+{k:"changed",l:"Looking back, did anything change because you used AI in that situation?",y:"t"},
+{k:"confidence",l:"How confident were you in your decision?",y:"r"},
+{k:"letter",l:"If you could write a short letter to the AI from that situation, what would you want to tell it?",y:"t"}]},
+{t:"When AI and other advice don't match",f:[
+{k:"mm",l:"Have you ever been in a situation about your baby's care where AI gave you information or advice that was different from what someone else told you?",y:"y"},
+{k:"mmSit",l:"What was the situation?",y:"t",c:1},{k:"mmAI",l:"What advice did AI give?",y:"t",c:1},{k:"mmOther",l:"What advice did the other person give?",y:"t",c:1},
+{k:"mmDid",l:"What did you do when their advice didn't match?",y:"t",c:1},{k:"mmWhy",l:"What was the reason behind taking that decision?",y:"t",c:1}]}
+];
+const F=S.flatMap((s,i)=>s.f.map(f=>({...f,st:s.t})));
+const AIL=[["q","What were you trying to find out, understand, check, or do?"],["a","What did you ask AI?"],["s","What did AI actually say?","You can briefly summarize the answer or paste the relevant text."],["d","What did you do next?"]];
+let A={ai:[],seq:[],who:[],whyBy:{}},step=0,mode="form",saved=false,db=null,user=null,owner=false,rows=[];
+try{const d=JSON.parse(localStorage.getItem("probe")||"null");if(d){A=d.A;step=d.step||0}}catch(e){}
+A.ai=A.ai||[];A.seq=A.seq||[];A.who=A.who||[];A.whyBy=A.whyBy||{};A.custom=A.custom||[];
+const $=id=>document.getElementById(id),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const keep=()=>{try{localStorage.setItem("probe",JSON.stringify({A,step}))}catch(e){}};
+const srcs=()=>{const o=A.who.filter(x=>x!=="Other"),t=(A.whoOther||"").trim();if(A.who.includes("Other")&&t&&!o.includes(t))o.push(t);return o};
+const ord=n=>n+["th","st","nd","rd"][(n%100>10&&n%100<14)?0:(n%10<4?n%10:0)];
+function aiHTML(){const raw=A.aiCount,n=Math.min(30,Math.max(0,parseInt(raw)||0));
+ if(raw===undefined||raw==="")return`<div class="h">Type the number above and the boxes will appear here.</div>`;
+ return Array.from({length:n},(_,i)=>{const r=A.ai[i]||{};return`<div class="ai"><b>${ord(i+1)} time</b>${AIL.map(([k,t,h])=>`<div class="h" style="margin-top:8px">${t}</div>${h?`<div class="h" style="margin-top:-6px;font-size:12px">${h}</div>`:""}<textarea style="min-height:70px" data-ai="${i}.${k}">${esc(r[k]||"")}</textarea>`).join("")}</div>`}).join("")}
+function whyHTML(){if(!A.seq.length)return`<div class="note">Please go back and tap the people or sources you turned to, in order, first.</div>`;
+ const c={};return A.seq.map((s,i)=>{c[s]=(c[s]||0)+1;const k=s+"#"+c[s];return`<div class="f"><label class="l">${i+1}. ${esc(s)}</label><div class="h">Why did you turn to ${esc(s)} ${c[s]>1?"again ":""}at this point?</div><textarea data-wy="${esc(k)}">${esc(A.whyBy[k]||"")}</textarea></div>`}).join("")}
+function build(){const seq=[...A.seq],c={},n=Math.min(30,Math.max(0,parseInt(A.aiCount)||0));
+ const whyList=seq.map((s,i)=>{c[s]=(c[s]||0)+1;return{n:i+1,source:s,occurrence:c[s],reason:A.whyBy[s+"#"+c[s]]||""}});
+ const aiUses=Array.from({length:n},(_,i)=>{const x=A.ai[i]||{};return{n:i+1,q:x.q||"",a:x.a||"",s:x.s||"",d:x.d||""}});
+ const r={...A,seq,whyList,aiUses,aiTimesInJourney:seq.filter(x=>x==="AI/ChatGPT").length,at:Date.now()};
+ delete r.ai;delete r.whyBy;if(!A.who.includes("Other"))delete r.whoOther;return r}
+let oo=false,pdfBuf=null,ls=-1;
+const allSrc=()=>{const c=[...(A.custom||[])],t=(A.whoOther||"").trim();if(t&&A.who.includes("Other")&&!c.includes(t))c.push(t);return[...SRC,...c.filter(x=>!SRC.includes(x))]};
+const otherBox=()=>`<div class="oth"><b>Other: who or what else did you turn to?</b><div class="h">Example: you called a lactation consultant. Type <i>Lactation consultant</i> and tap "Add to my order". It goes into your order, and it also becomes a button, so you can tap it again if you went back to it later.</div><input type="text" id="othIn" placeholder="Type here, e.g. Lactation consultant"><div class="chips"><button class="c" data-oa>Add to my order</button><button class="c" data-oc>Cancel</button></div></div>`;
+const docHTML=r=>`<div class="pdf"><h1>My Journey Through a Situation</h1><div class="m">${esc(r.name||"")}${r.name?" · ":""}${new Date().toLocaleDateString()}</div><div class="pb">${flat(r).filter(([l,v])=>v&&v.trim()).map(([l,v])=>`<div class="qa"><div class="q">${esc(l)}</div><div class="a">${esc(v)}</div></div>`).join("")||"<p>No answers yet.</p>"}</div></div>`;
+function drawReview(){$("nav").style.display="none";
+ $("app").innerHTML=`<h2>Your answers</h2><div class="note">Please check your answers. You can save them as a PDF, or go back and edit. After saving, please send the PDF to me.</div>${docHTML(build())}<div class="stack"><button class="b" id="pdf">Save as PDF</button><button class="b g" id="edt">Go back and edit</button></div><div class="h" id="msg" style="text-align:center;margin-top:8px"></div>`}
+async function makePDF(){const r=build(),host=document.createElement("div");host.style.cssText="position:absolute;left:-9999px;top:0;width:640px";host.innerHTML=docHTML(r);document.body.appendChild(host);
+ try{const el=host.firstElementChild,cv=await html2canvas(el,{scale:1.5,backgroundColor:"#ffffff",onclone:(d,e)=>{const h=e.parentElement;if(h)h.style.cssText="position:absolute;left:0;top:0;width:640px"}}),pdf=new window.jspdf.jsPDF({unit:"pt",format:"a4"}),pw=595.28,ph=841.89,M=24,W=el.offsetWidth,k=cv.width/W,pageCss=(ph-2*M)/pw*W,cuts=[0];let st=0;
+  for(const b of el.querySelector(".pb").children){const t=b.offsetTop,bt=t+b.offsetHeight;if(bt-st>pageCss&&t>st){cuts.push(t);st=t}while(bt-st>pageCss){st+=pageCss;cuts.push(st)}}
+  cuts.push(el.offsetHeight);
+  for(let i=0;i<cuts.length-1;i++){const y=Math.round(cuts[i]*k),h=Math.round((cuts[i+1]-cuts[i])*k);if(h<=0)continue;const c=document.createElement("canvas");c.width=cv.width;c.height=h;const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,h);x.drawImage(cv,0,y,cv.width,h,0,0,cv.width,h);if(i)pdf.addPage();pdf.addImage(c.toDataURL("image/jpeg",.92),"JPEG",0,M,pw,h/k*pw/W)}
+  return pdf.output("arraybuffer")}finally{host.remove()}}
+const msg=t=>{const m=$("msg");if(m)m.textContent=t};
+async function busy(t,txt,fn){const o=t.textContent;t.disabled=true;t.textContent=txt;try{await fn()}catch(e){if(!(e&&e.name==="AbortError"))msg("Sorry, the PDF could not be made ("+((e&&(e.code||e.message))||"error")+"). Please try again.")}t.disabled=false;t.textContent=o}
+const savePDF=t=>busy(t,"Making PDF…",async()=>{
+ const buf=await makePDF(),blob=new Blob([buf],{type:"application/pdf"});let d=null;try{d=await claude.use("downloads")}catch(e){}
+ if(d){try{await d.save({filename:"my-story.pdf",data:blob});msg("Saved ✓ Please send the PDF to me.");return}catch(e){if(e&&e.code==="declined"){msg("Not saved. Tap Save as PDF to try again.");return}}}
+ const f=new File([buf],"my-story.pdf",{type:"application/pdf"});
+ if(navigator.canShare&&navigator.canShare({files:[f]})){try{await navigator.share({files:[f],title:"My story"});return}catch(e){if(e&&e.name==="AbortError")return}}
+ const m=$("msg");if(m)m.innerHTML=`Your PDF is ready. <a href="${URL.createObjectURL(blob)}" download="my-story.pdf" target="_blank" style="color:var(--acc);font-weight:700">Tap here to open or download it</a>`});
+function field(f){
+ if(f.c&&A.mm!=="Yes")return"";
+ if(f.y==="w")return whyHTML();
+ const v=A[f.k]??"",L=`<label class="l">${esc(f.l)}</label>${f.h?`<div class="h">${esc(f.h)}</div>`:""}`;
+ let b="";
+ if(f.y==="t")b=`<textarea data-k="${f.k}">${esc(v)}</textarea>`;
+ else if(f.y==="s")b=`<input type="text" data-k="${f.k}" value="${esc(v)}">`;
+ else if(f.y==="n")b=`<input type="number" inputmode="numeric" min="0" data-k="${f.k}" value="${esc(v)}">`;
+ else if(f.y==="c")b=SRC.map(o=>`<label class="o"><input type="checkbox" data-w="${esc(o)}" ${A.who.includes(o)?"checked":""}>${esc(o)}</label>`).join("")+`<div class="o"><input type="checkbox" data-w="Other" ${A.who.includes("Other")?"checked":""}><span>Other:</span><input type="text" data-k="whoOther" value="${esc(A.whoOther||"")}" placeholder="e.g. Lactation consultant"></div>`;
+ else if(f.y==="y")b=["Yes","No","I don't remember"].map(o=>`<label class="o"><input type="radio" name="mm" data-y="${esc(o)}" ${v===o?"checked":""}>${o}</label>`).join("");
+ else if(f.y==="r")b=`<div class="rate">${[1,2,3,4,5].map(n=>`<button data-r="${n}" class="${v==n?"on":""}">${n}</button>`).join("")}</div><div class="rl"><span>Not confident</span><span>Very confident</span></div>`;
+ else if(f.y==="q")b=`<div class="chips">${allSrc().map(x=>{const n=A.seq.filter(y=>y===x).length;return`<button class="c${n?" on":""}" data-s="${esc(x)}">${esc(x)}${n?`<span class="n">${n}</span>`:""}</button>`}).join("")}<button class="c${oo?" on":""}" data-oo style="border-style:dashed">＋ Other</button></div>${oo?otherBox():""}<div class="seq">${A.seq.length?A.seq.map(esc).join(" → "):"Your order will show here"}</div><div class="chips"><button class="c" data-su>↩ Undo last</button><button class="c" data-sc>Clear</button></div>`;
+ else if(f.y==="a")b=`<div id="aiBox">${aiHTML()}</div>`;
+ return`<div class="f">${L}${b}</div>`}
+function draw(){
+ if(mode==="resp")return drawResp();
+ if(mode==="review")return drawReview();
+ const last=step===S.length-1,s=S[step];
+ $("nav").style.display="";
+ $("app").innerHTML=`<div class="bar"><i style="width:${(step+1)/S.length*100}%"></i></div><div class="pg">Step ${step+1} of ${S.length}</div><h2>${esc(s.t)}</h2>${s.n?`<div class="note">${esc(s.n)}</div>`:""}${s.f.map(field).join("")}`;
+ $("nav").firstElementChild.innerHTML=`${step?`<button class="b g" id="bk">Back</button>`:""}<button class="b" id="nx">${last?"Review my answers":"Next"}</button>`;
+ if(ls!==step){scrollTo(0,0);ls=step}keep()}
+function flat(r){return F.map(f=>{let v=r[f.k];
+ if(f.k==="ai")v=(r.aiUses||r.ai||[]).map((x,i)=>`${x.n||i+1}) Trying: ${x.q||"-"} | Asked: ${x.a||"-"} | AI said: ${x.s||"-"} | Next: ${x.d||"-"}`).join("\n");
+ else if(f.k==="why")v=(r.whyList||[]).map(w=>`${w.n}) ${w.source}${w.occurrence>1?" (again)":""}: ${w.reason||"-"}`).join("\n");
+ else if(f.k==="who")v=(v||[]).map(x=>x==="Other"?"Other: "+(r.whoOther||""):x).join(", ");
+ else if(f.k==="seq")v=(v||[]).join(" → ");else if(Array.isArray(v))v=v.join(", ");
+ return[f.l,v==null?"":String(v)]})}
+const text=r=>"Cultural probe response\n\n"+flat(r).map(([l,v])=>`${l}\n${v||"-"}`).join("\n\n");
+const csv=rs=>"\ufeff"+[["Submitted",...F.map(f=>f.k)],...rs.map(r=>[new Date(r.at||0).toLocaleString(),...flat(r).map(x=>x[1])])].map(a=>a.map(c=>`"${String(c).replace(/"/g,'""')}"`).join(",")).join("\n");
+async function save(name,data){const d=await claude.use("downloads");if(d)try{await d.save({filename:name,data})}catch(e){}}
+function drawResp(){
+ $("nav").style.display="none";
+ $("app").innerHTML=`<div class="t"><button id="back">← Back to form</button></div><h1>${rows.length} response${rows.length==1?"":"s"}</h1><div class="chips"><button class="c" id="csv">Download CSV</button><button class="c" id="json">Download JSON</button></div>`+rows.map(r=>`<div class="row"><b>${esc(r.name||"Anonymous")}</b> · ${esc(r.babyAge||"")} · ${new Date(r.at||0).toLocaleDateString()}<br>${esc((r.happened||"").slice(0,140))}</div>`).join("")}
+document.addEventListener("input",e=>{const t=e.target;
+ if(t.dataset.k){A[t.dataset.k]=t.value;
+  if(t.dataset.k==="whoOther"&&t.value.trim()&&!A.who.includes("Other")){A.who.push("Other");const c=document.querySelector('[data-w="Other"]');if(c)c.checked=true}
+  if(t.dataset.k==="aiCount"){const b=$("aiBox");if(b)b.innerHTML=aiHTML()}}
+ else if(t.dataset.wy)A.whyBy[t.dataset.wy]=t.value;
+ else if(t.dataset.ai){const[i,k]=t.dataset.ai.split(".");(A.ai[i]=A.ai[i]||{})[k]=t.value}
+ keep()});
+document.addEventListener("change",e=>{const t=e.target;
+ if(t.dataset.w){A.who=t.checked?[...A.who,t.dataset.w]:A.who.filter(x=>x!==t.dataset.w);keep()}
+ if(t.dataset.y){A.mm=t.dataset.y;draw()}});
+document.addEventListener("click",async e=>{const t=e.target.closest("button");if(!t)return;const d=t.dataset;
+ if(t.id==="nx"){step===S.length-1?(mode="review",scrollTo(0,0),draw()):(step++,draw())}
+ else if(t.id==="bk"){step--;draw()}
+ else if("r"in d){A.confidence=+d.r;draw()}
+ else if("oo"in d){oo=true;draw();const i=$("othIn");if(i)i.focus()}
+ else if("oc"in d){oo=false;draw()}
+ else if("oa"in d){const v=($("othIn").value||"").trim();if(!v)return;const m=allSrc().find(x=>x.toLowerCase()===v.toLowerCase());if(!m)A.custom.push(v);A.seq.push(m||v);oo=false;draw()}
+ else if(t.id==="pdf")savePDF(t)
+ else if(t.id==="edt"){mode="form";step=S.length-1;scrollTo(0,0);draw()}
+ else if("s"in d){A.seq.push(d.s);draw()}
+ else if("su"in d){A.seq.pop();draw()}
+ else if("sc"in d){A.seq=[];draw()}
+ else if(t.id==="back"){mode="form";draw()}
+ else if(t.id==="csv")save("probe-responses.csv",csv(rows));
+ else if(t.id==="json")save("probe-responses.json",JSON.stringify(rows,null,1))});
+draw();
+(async()=>{try{
+ user=await claude.use("user");owner=user?user.isOwner():false;
+ db=await claude.use("db");
+ if(db&&owner){db.collection("responses").onSnapshot(s=>{rows=s.docs.map(d=>d.data()).sort((a,b)=>(b.at||0)-(a.at||0));if(mode==="resp")draw()},()=>{});if(location.hash==="#responses"){mode="resp";draw()}}
+}catch(e){}})();
+</script></body></html>
